@@ -200,7 +200,7 @@ download small image
 		SUDO_CMDS=$(cat /var/log/sudo/sudo.log | wc -l)
 
 		wall <<EOF
-		#Architecture: $ARCH_HEAD $ARCH_NAME $ARCH_MID ($ARCH_YEAR-$ARCH_MONTH-$ARCH_DAY) $ARCH_TAIL
+		#Architecture: $ARCH_HEAD
 		#CPU physical: $CPU_PHYSICAL
 		#vCPU: $VCPU
 		#Memory Usage: $URAM/${FRAM}MiB ($PRAM%)
