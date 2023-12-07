@@ -49,12 +49,6 @@ download small image
 		custom
 			set partitions like subject
 
-## Set vim ##
-
-	set vim as default editor text
-		$ update-alternatives --config editor
-			set /usr/bin/vim.basic
-
 ## Set sudo ##
 
 	Install sudo
@@ -80,6 +74,12 @@ download small image
 		$ sudo apt-get update && sudo apt-get upgrade
 	install	vim
 		$ sudo apt-get install net-tools bc unzip wget vim curl
+
+## Set vim ##
+
+	set vim as default editor text
+		$ update-alternatives --config editor
+			set /usr/bin/vim.basic
 
 ## Check volumes ##
 
