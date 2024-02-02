@@ -253,6 +253,8 @@ download small image
 	FLUSH PRIVILEGES;
 	SQL_COMMANDS
 
+		$ cd html
+
 		$ sudo cp './wp-config-sample.php' './wp-config.php'
 	
 		$ sudo sed -e "s/^\s*#\?\s*define(\s*'DB_NAME',\s*.*/define('DB_NAME', 'wordpress');/" -e "s/^\s*#\?\s*define(\s*'DB_USER',\s*.*/define('DB_USER', '"your login"');/" -e "s/^\s*#\?\s*define(\s*'DB_PASSWORD',\s*.*/define('DB_PASSWORD', 'your-password_mariadb');/" -e "s/^\s*#\?\s*define(\s*'DB_HOST',\s*.*/define('DB_HOST', 'localhost');/" -i './wp-config.php'
