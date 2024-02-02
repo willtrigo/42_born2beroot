@@ -248,8 +248,8 @@ download small image
 	FLUSH PRIVILEGES;
 
 	CREATE DATABASE wordpress;
-	CREATE USER '"your login"'@'localhost' IDENTIFIED BY 'your-password_mariadb';
-	GRANT ALL PRIVILEGES ON wordpress.* TO '"your login"'@'localhost';
+	CREATE USER 'dande-je'@'localhost' IDENTIFIED BY '42debian@BORNM';
+	GRANT ALL PRIVILEGES ON wordpress.* TO 'dande-je'@'localhost';
 	FLUSH PRIVILEGES;
 	SQL_COMMANDS
 
@@ -257,7 +257,7 @@ download small image
 
 		$ sudo cp './wp-config-sample.php' './wp-config.php'
 	
-		$ sudo sed -e "s/^\s*#\?\s*define(\s*'DB_NAME',\s*.*/define('DB_NAME', 'wordpress');/" -e "s/^\s*#\?\s*define(\s*'DB_USER',\s*.*/define('DB_USER', '"your login"');/" -e "s/^\s*#\?\s*define(\s*'DB_PASSWORD',\s*.*/define('DB_PASSWORD', 'your-password_mariadb');/" -e "s/^\s*#\?\s*define(\s*'DB_HOST',\s*.*/define('DB_HOST', 'localhost');/" -i './wp-config.php'
+		$ sudo sed -e "s/^\s*#\?\s*define(\s*'DB_NAME',\s*.*/define('DB_NAME', 'wordpress');/" -e "s/^\s*#\?\s*define(\s*'DB_USER',\s*.*/define('DB_USER', 'dande-je');/" -e "s/^\s*#\?\s*define(\s*'DB_PASSWORD',\s*.*/define('DB_PASSWORD', '42debian@BORNM');/" -e "s/^\s*#\?\s*define(\s*'DB_HOST',\s*.*/define('DB_HOST', 'localhost');/" -i './wp-config.php'
 
 		$ sudo grep -v 'put your unique phrase here' './wp-config.php' > tmp.php
 		$ sudo curl -L 'https://api.wordpress.org/secret-key/1.1/salt' >> tmp.php
