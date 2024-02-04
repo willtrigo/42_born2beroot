@@ -54,7 +54,7 @@ download small image
 	Install sudo
 		$ apt install sudo
 	Config sudo
-		$ /etc/sudoers.d/sudoers
+		$ vim /etc/sudoers.d/sudoers
 			in the end of the file add
 				Defaults	badpass_message="Invalid password. No more soup for you." 
 				Defaults	env_reset 
