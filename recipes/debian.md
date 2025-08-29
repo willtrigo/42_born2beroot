@@ -180,8 +180,8 @@ download small image
 		#!/bin/bash
 
 		ARCH_HEAD=$(uname -a)
-		CPU_PHYSICAL=$(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)
-		VCPU=$(grep "^processor" /proc/cpuinfo | wc -l)
+		CPU_PHYSICAL=$(grep "physical id" /proc/cpuinfo | sort -u | wc -l)
+		VCPU=$(grep -c processor /proc/cpuinfo)
 		FRAM=$(free -m | awk '$1 == "Mem:" {print $2}')
 		URAM=$(free -m | awk '$1 == "Mem:" {print $3}')
 		PRAM=$(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
@@ -199,7 +199,7 @@ download small image
 		MAC=$(cat /sys/class/net/*/address | awk 'NR==1')
 		SUDO_CMDS=$(cat /var/log/sudo/sudo.log | wc -l)
 
-		wall <<EOF
+		msg="
 		#Architecture: $ARCH_HEAD
 		#CPU physical: $CPU_PHYSICAL
 		#vCPU: $VCPU
@@ -212,7 +212,18 @@ download small image
 		#User log: $USER_LOG
 		#Network: IP $IP ($MAC)
 		#Sudo: $SUDO_CMDS cmd
-		EOF
+		"
+
+		if [ ! -f /tmp/startup-message-displayed ]; then
+	        echo "$message" | sudo tee /etc/issue > /dev/null
+	        touch /tmp/startup-message-displayed
+		fi
+
+		ls /dev/pts/* /dev/tty[1-6] | while read -r TTY; do
+		  if [ -w "$TTY" ]; then
+		    printf "%s\n" "$message" > "$TTY"
+		  fi
+		done
 	$ sudo chmod 777 /usr/local/bin/monitoring.sh
 
 ## Crontab config ##
